@@ -1,0 +1,35 @@
+<aura:component >
+    <aura:attribute name="record" type="Object"/>
+
+    <!-- <aura:registerEvent name="recordUpdated" type="c:recordUpdated"/> -->
+
+	  <lightning:recordViewForm aura:id="viewForm" recordId="{!v.record.Id}" objectApiName="Opportunity">
+      <div class="slds-media">
+        <div class="slds-media__body">
+          <lightning:layout class="slds-hint-parent">
+            <a onclick="{!c.navToRecord}">
+              <h3 class="slds-text-heading_small slds-m-bottom_xx-small">{!v.record.Name}</h3>
+            </a>
+            <lightning:buttonMenu aura:id="menu" onselect="{! c.handleSelect }" alternativeText="Show menu">
+              <lightning:menuItem value="edit" label="edit" />
+              <lightning:menuItem value="delete" label="delete" />
+            </lightning:buttonMenu>
+          </lightning:layout>
+          <lightning:layout multipleRows="true">
+            <lightning:layoutItem size="6">
+              <lightning:outputField fieldName="Amount"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6">
+              <lightning:outputField fieldName="StageName"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6">
+              <lightning:outputField fieldName="CloseDate"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="6">
+              <lightning:outputField fieldName="isPrivate"/>
+            </lightning:layoutItem>
+          </lightning:layout>
+        </div>
+      </div>
+    </lightning:recordViewForm>
+</aura:component>
